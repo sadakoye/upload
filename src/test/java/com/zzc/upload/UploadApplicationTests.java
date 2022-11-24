@@ -15,7 +15,8 @@ class UploadApplicationTests {
     @Test
     void contextLoads() {
         //System.out.println(uploadController.getFile("C:\\Users\\Administrator\\Desktop\\巡控"));
-        System.out.println(uploadController.getAllFile("C:\\Users\\Administrator\\Desktop"));
+        //System.out.println(uploadController.getAllFile("C:\\Users\\Administrator\\Desktop"));
+        System.out.println(uploadController.delete("新建文本文档.txt", "D:"));
     }
 
 }

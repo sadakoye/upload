@@ -88,6 +88,14 @@ public class UploadController {
         return r.toString();
     }
 
+    /**
+     * 下载
+     *
+     * @param response
+     * @param name
+     * @param path
+     * @author zzc
+     */
     @GetMapping("/download")
     public void getImage(HttpServletResponse response, @RequestParam String name, @RequestParam String path) throws IOException {
         //动态获取图片存放位置
@@ -160,7 +168,37 @@ public class UploadController {
             path = new File("");
         }
         File upload = new File(path.getAbsolutePath(), "static/upload/");
-        if (!upload.exists()) upload.mkdirs();
+        if (!upload.exists()) {
+            upload.mkdirs();
+        }
         return upload.getAbsolutePath();
+    }
+
+    /**
+     * 下载
+     *
+     * @param name 文件名
+     * @param path 路径
+     * @return Result
+     * @author zzc
+     */
+    @GetMapping("/delete")
+    public Result<Object> delete(@RequestParam String name, @RequestParam String path){
+        //动态获取图片存放位置
+        //获取当前系统路径
+        //        String path = getUploadPath();
+        String filePath = path + File.separator + name;
+        //String imagePath = name;
+        File file = new File(filePath);
+        if (!file.exists()) {
+            return Result.error("无此文件");
+        }
+        boolean delete = file.delete();
+        if (delete) {
+            return Result.success();
+        } else {
+            return Result.error();
+        }
+
     }
 }
