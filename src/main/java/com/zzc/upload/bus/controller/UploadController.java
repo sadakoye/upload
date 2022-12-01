@@ -156,6 +156,7 @@ public class UploadController {
         return fileName;
     }
 
+
     /**
      * 获取当前系统路径
      */
@@ -175,7 +176,7 @@ public class UploadController {
     }
 
     /**
-     * 下载
+     * 删除
      *
      * @param name 文件名
      * @param path 路径
