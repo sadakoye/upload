@@ -202,4 +202,9 @@ public class UploadController {
         }
 
     }
+
+    @GetMapping("/")
+    public Result<String> hello() {
+    return Result.success("hello");
+    }
 }
