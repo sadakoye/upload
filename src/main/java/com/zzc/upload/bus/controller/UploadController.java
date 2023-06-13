@@ -203,6 +203,25 @@ public class UploadController {
 
     }
 
+    /**
+     * 设置权限
+     *
+     * @param path 路径
+     * @return Result
+     * @author zzc
+     */
+    @GetMapping("/permission")
+    public Result<Object> permission(@RequestParam String path){
+        File file = new File(path);
+        //设置可执行权限
+        boolean exec= file.setExecutable(true,false);
+        //设置可读权限
+        boolean read= file.setReadable(true,false);
+        //设置可写权限
+        boolean write= file.setWritable(true,false);
+        return Result.success("exec:" + exec + ",read:" + read + ",write:" + write);
+    }
+
     @GetMapping("/")
     public Result<String> hello() {
     return Result.success("hello");
